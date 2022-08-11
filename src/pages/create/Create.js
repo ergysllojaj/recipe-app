@@ -3,6 +3,8 @@ import { useFetch } from "../../hooks/useFetch";
 import { useRef } from "react";
 import { useState } from "react";
 import "./Create.css";
+import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 export default function Create() {
   const [title, setTitle] = useState("");
@@ -11,6 +13,7 @@ export default function Create() {
   const [newIngredient, setNewIngredient] = useState("");
   const [ingredients, setIngredients] = useState([]);
   const ingredientInput = useRef(null);
+  const history = useHistory();
 
   const { postData, data, error } = useFetch(
     "http://localhost:3000/recipes",
@@ -38,6 +41,12 @@ export default function Create() {
     setNewIngredient("");
     ingredientInput.current.focus();
   };
+
+  useEffect(() => {
+    if (data) {
+      history.push("/");
+    }
+  }, [data]);
 
   return (
     <div className="create">
