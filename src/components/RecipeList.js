@@ -3,6 +3,14 @@ import { Link } from "react-router-dom";
 import React from "react";
 
 export default function RecipeList({ recipes }) {
+  if (recipes.length === 0) {
+    return (
+      <div className="error">
+        <p>No recipes found</p>
+      </div>
+    );
+  }
+
   return (
     <div className="recipe-list">
       {recipes.map((recipe) => (
