@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import "./SearchBar.css";
 
 export default function SearchBar() {
-  const [term, setTerm] = React.useState("");
+  const [term, setTerm] = useState("");
   const history = useHistory();
 
   const handleSubmit = (event) => {
